@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
+from .forms import CustomUserForm
 
 # Create your views here.
 
@@ -28,7 +29,14 @@ def signin(request):
 # this function handles the signin credentials to provide user authetentication
 def register(request):
     if request.method == "POST":
-        return redirect("index")
+        form = CustomUserForm(request.POST)
+
+        if form:
+            form.save()
+            messages.success(request, "SignUp Successfull")
+        else:
+            messages.error(request, "Invalid user name or password")
+        return redirect("register")
     else:
         return render(request, "register.html")
 
