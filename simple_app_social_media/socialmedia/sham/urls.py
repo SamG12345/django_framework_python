@@ -9,4 +9,4 @@ urlpatterns += [ path("signin", views.signin, name="signin"), ]
 
 
 # registration
-urlpatterns += [ path("signin", views.signin, name="signin"), ]
+urlpatterns += [ path("register", views.register, name="register"), ]
