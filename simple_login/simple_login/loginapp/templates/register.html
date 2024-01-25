@@ -1,0 +1,30 @@
+{% block content %}
+
+<div>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="username">username</label>
+            <input type="text" name ="username" id="username">
+        </div>
+
+        <div>
+            <label for="password1">password</label>
+            <input type="password" name ="password1" id="password1">
+        </div>
+
+        <div>
+            <label for="password2">re-password</label>
+            <input type="password" name ="password2" id="password2">
+        </div>
+
+        <div>
+            <button type="submit">register</button>
+        </div>
+    </form>
+</div>
+<div>
+    <a href={% url 'signin' %}>signin</a>
+</div>
+
+{% endblock %}

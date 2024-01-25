@@ -1,0 +1,32 @@
+{% block content %}
+
+<div>
+    <form method="post">
+        {% csrf_token %}
+        <div>
+            <label for="username">username</label>
+            <input type="text" name ="username" id="username">
+        </div>
+
+        <div>
+            <label for="password">password</label>
+            <input type="password" name ="password" id="password">
+        </div>
+
+        <div>
+            <button type="submit">signin</button>
+        </div>
+    </form>
+</div>
+{% if messages %}
+<div class="success-message">
+    {% for message in messages %}
+        <p class="success">{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
+<div>
+    <a href={% url 'register' %}>register</a>
+</div>
+
+{% endblock %}
