@@ -23,6 +23,13 @@
         </div>
     </form>
 </div>
+{% if messages %}
+<div class="success-message">
+    {% for message in messages %}
+        <p class="success">{{ message }}</p>
+    {% endfor %}
+</div>
+{% endif %}
 <div>
     <a href={% url 'signin' %}>signin</a>
 </div>
