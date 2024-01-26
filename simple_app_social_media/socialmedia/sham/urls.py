@@ -11,4 +11,4 @@ urlpatterns += [ path("signin", views.signin, name="signin"), ]
 urlpatterns += [ path("register", views.register, name="register"), ]
 
 #logout
-urlpatterns += [ path("logout", views.logout, name="logout"), ]
+urlpatterns += [ path("signout", views.signout, name="signout"), ]
