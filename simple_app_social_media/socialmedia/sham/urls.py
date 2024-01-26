@@ -15,3 +15,6 @@ urlpatterns += [ path("signout", views.signout, name="signout"), ]
 
 # profile
 urlpatterns += [ path("profile/<int:id>", views.profile_view, name="profile"), ]
+
+# like lekh
+urlpatterns += [ path("like/<int:lekh_id>", views.like_lekh, name="like_lekh"), ]
