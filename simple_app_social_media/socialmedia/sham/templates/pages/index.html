@@ -5,7 +5,8 @@
 {% block content %}
 <div>
     {% if form %}
-    <form>
+    <form method="post">
+        {% csrf_token %}
         <div>
         {{form}}
         </div>

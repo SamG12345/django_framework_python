@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth  import authenticate, login
 from .forms import CustomUserForm, LekhForm
 from django.contrib import messages
-from .models import Lekh
+from .models import Lekh, Profile
 
 # Create your views here.
 
@@ -50,11 +50,13 @@ def register(request):
 def index(request):
     if request.user.is_authenticated:
         form = LekhForm(request.POST or None)
-        if request.method == "POST":
-            
-            if form.is_valid():
-                form.save()
-                return redirect("index")
+        if form.is_valid():
+            print("form")
+            le = form.save(commit=False)
+            p = Profile.objects.get(user=request.user)
+            le.profile = p
+            le.save()
+            return redirect("index")
         else:
             lekh = Lekh.objects.all().order_by('-date_created')
             return render(request, "pages/index.html", {"lekhs":lekh, "form":form})
