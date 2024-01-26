@@ -49,14 +49,13 @@ def register(request):
 # home or index page if user logged
 def index(request):
     if request.user.is_authenticated:
-        
+        form = LekhForm(request.POST or None)
         if request.method == "POST":
-            form = LekhForm(request.POST)
+            
             if form.is_valid():
                 form.save()
                 return redirect("index")
         else:
-            form = LekhForm(None)
             lekh = Lekh.objects.all().order_by('-date_created')
             return render(request, "pages/index.html", {"lekhs":lekh, "form":form})
     else:
