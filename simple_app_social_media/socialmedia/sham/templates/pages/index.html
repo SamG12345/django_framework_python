@@ -4,16 +4,18 @@
 {% load static %}
 
 {% block content %}
-    <div class="container">
-        <form method="post">
-            {% csrf_token %}
-            <div>
-                {{ form.body }}
-            </div>
-            <div>
-                <button type="submit">Post Lekh</button>
-            </div>
-        </form>
+    <div class="container center">
+        <div>
+            <form method="post">
+                {% csrf_token %}
+                <div>
+                    {{ form.body }}
+                </div>
+                <div>
+                    <button type="submit">Post Lekh</button>
+                </div>
+            </form>
+        </div>
 
         <div>
             {% if lekhs %}

@@ -48,7 +48,8 @@ body {
 }
 
 form {
-    margin-bottom: 20px;
+    margin-top: 11px;
+    margin-bottom: 22px;
 }
 
 .lekh {
@@ -67,12 +68,12 @@ form {
 
 .lekh .date {
     color: #888;
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .lekh .likes {
     color: #888;
-    font-size: 12px;
+    font-size: 13px;
 }
 .center {
     margin: 0 auto;
