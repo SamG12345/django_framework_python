@@ -20,4 +20,4 @@ class LekhForm(forms.ModelForm):
                            )
     class Meta:
         model = Lekh
-        exclude =("used", "likes",)
+        fields=["body"]
