@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth  import authenticate, login, logout
 from .forms import CustomUserForm, LekhForm
 from django.contrib import messages
@@ -61,8 +61,17 @@ def index(request):
     else:
         return redirect("signin")
 
-
+# signout the user if logged in
 def signout(request):
     if request.user.is_authenticated:
         logout(request)
     return redirect("signin")
+
+# profile viewing
+def profile_view(request, id):
+    if request.user.is_authenticated:
+        profile = get_object_or_404(Profile, user_id=id)
+        print("profile = ",profile)
+        lekhs = Lekh.objects.filter(profile=profile)
+        print("lekhs = ", lekhs)
+        return render(request, 'pages/profile.html', {"profile":profile, "lekhs":lekhs})
