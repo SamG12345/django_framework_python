@@ -4,6 +4,8 @@
 
 {% block content %}
 <div>
+    <a href={% url 'logout' %}
+<div>
     {% if form %}
     <form method="post">
         {% csrf_token %}

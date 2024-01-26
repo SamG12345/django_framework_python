@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth  import authenticate, login
+from django.contrib.auth  import authenticate, login, logout
 from .forms import CustomUserForm, LekhForm
 from django.contrib import messages
 from .models import Lekh, Profile
@@ -59,4 +59,10 @@ def index(request):
             lekh = Lekh.objects.all().order_by('-date_created')
             return render(request, "pages/index.html", {"lekhs":lekh, "form":form})
     else:
+        return redirect("signin")
+
+
+def logout(request):
+    if request.user._is_authenticated():
+        logout(request)
         return redirect("signin")
