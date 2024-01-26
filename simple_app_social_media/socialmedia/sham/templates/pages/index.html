@@ -4,6 +4,19 @@
 
 {% block content %}
 <div>
+    {% if form %}
+    <form>
+        <div>
+        {{form}}
+        </div>
+        <div>
+            <button type="submit">Lekh</button>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<div>
     content
     {% if lekhs %}
         {% for lekh in lekhs %}
