@@ -1,5 +1,15 @@
 {% block content %}
 
+{% if messages %}
+<div class="success-message">
+    {% for message in messages %}
+    <div>
+        <p class="success">{{ message }}</p>
+    </div>
+    {% endfor %}
+</div>
+{% endif %}
+
 <form method="POST">
     {% csrf_token %}
     <div class="login_container">

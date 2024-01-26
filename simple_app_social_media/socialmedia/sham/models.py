@@ -6,6 +6,8 @@ from django.db.models.signals import post_save
 
 class Profile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    companian = models.ManyToManyField("self", related_name="companianed_by", symmetrical=False, blank=True)
+    date_created = models.DateTimeField("self", auto_now_add=True)
 
     def __str__(self) -> str:
         return self.user.username
