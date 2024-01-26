@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth  import authenticate, login
-from .forms import CustomUserForm
+from .forms import CustomUserForm, LekhForm
 from django.contrib import messages
 from .models import Lekh
 
@@ -49,7 +49,15 @@ def register(request):
 # home or index page if user logged
 def index(request):
     if request.user.is_authenticated:
-        lekh = Lekh.objects.all().order_by('-date_created')
-        return render(request, "pages/index.html", {"lekhs":lekh})
+        
+        if request.method == "POST":
+            form = LekhForm(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect("index")
+        else:
+            form = LekhForm(None)
+            lekh = Lekh.objects.all().order_by('-date_created')
+            return render(request, "pages/index.html", {"lekhs":lekh, "form":form})
     else:
         return redirect("signin")
