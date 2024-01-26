@@ -97,3 +97,7 @@ form {
     border-radius: 5px; /* Example border radius for rounded corners */
     /* Add other styles as needed */
 }
+.prof {
+    background-color: silver;
+    padding: 50px;
+}
