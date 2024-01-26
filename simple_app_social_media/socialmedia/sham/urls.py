@@ -10,5 +10,8 @@ urlpatterns += [ path("signin", views.signin, name="signin"), ]
 # registration
 urlpatterns += [ path("register", views.register, name="register"), ]
 
-#logout
+# logout
 urlpatterns += [ path("signout", views.signout, name="signout"), ]
+
+# profile
+urlpatterns += [ path("profile/<int:id>", views.profile_view, name="profile"), ]

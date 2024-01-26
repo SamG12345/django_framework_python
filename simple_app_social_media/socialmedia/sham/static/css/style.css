@@ -74,3 +74,86 @@ form {
     color: #888;
     font-size: 12px;
 }
+
+/* style.css */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    margin: 20px;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+.lekh {
+    border: 1px solid #ddd;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.lekh .profile {
+    font-weight: bold;
+}
+
+.lekh .body {
+    margin-top: 10px;
+}
+
+.lekh .date {
+    color: #888;
+    font-size: 12px;
+}
+
+.lekh .likes {
+    color: #888;
+    font-size: 12px;
+}
+
+/* Style the form */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form textarea {
+    height: 100px;
+    margin-bottom: 10px;
+    resize: none;
+}
+
+form button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+
+/* Style the lekh entries */
+.lekh {
+    background-color: #f9f9f9;
+}
+
+.like-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.like-button:hover {
+    background-color: #2980b9;
+}
