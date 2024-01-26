@@ -1,39 +1,55 @@
-<!-- index.html -->
+<!-- pages/profile.html -->
 
 {% extends 'pages/base.html' %}
 {% load static %}
 
 {% block content %}
-<div>
-    <div>
-        
-    </div>
-    <div class="container">
-        <form method="post">
-            {% csrf_token %}
-            <div>
-                {{ form.body }}
-            </div>
-            <div>
-                <button type="submit">Post Lekh</button>
-            </div>
-        </form>
-
+<div class="profile-info">
+    {% if profile %}
         <div>
-            {% if lekhs %}
-                {% for lekh in lekhs %}
-                    <div class="lekh">
-                        <div class="profile">{{ lekh.profile }}</div>
-                        <div class="body">{{ lekh.body }}</div>
-                        <div class="date">{{ lekh.date_created }}</div>
-                        <div class="likes">
-                            <span>{{ lekh.no_of_likes }} Likes</span>
-                            <button class="like-button">Like</button>
-                        </div>
-                    </div>
-                {% endfor %}
-            {% endif %}
+            <h2>{{ profile.user }}</h2>
         </div>
-    </div>
+        <div class="left">
+            <p>{{ profile.date_created }}</p>
+        </div>
+        <div class="container form-container">
+            <div class="companions right">
+                {% if profile.companian %}
+                    {% for com in profile.companian.all %}
+                        <div>{{ com }}</div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <div class="center">
+                <div>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div>
+                            {{ form.body.label_tag }}
+                            {{ form.body }}
+                        </div>
+                        <div>
+                            <button type="submit">Post Lekh</button>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    {% if lekhs %}
+                        {% for lekh in lekhs %}
+                            <div class="lekh">
+                                <div class="profile">{{ lekh.profile }}</div>
+                                <div class="body">{{ lekh.body }}</div>
+                                <div class="date">{{ lekh.date_created }}</div>
+                                <div class="likes">
+                                    <span>{{ lekh.no_of_likes }} Likes</span>
+                                    <button class="like-button">Like</button>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
 </div>
 {% endblock %}

@@ -13,7 +13,9 @@ class LekhForm(forms.ModelForm):
                            widget=forms.widgets.Textarea(
                                attrs={
                                    "placeholder": "Write Something",
-                                   "class": "form-control"
+                                   "class": "form-control",
+                                   "style": "resize: none; width: 400px; height: 100px;"
+
                                }
                            ),
                            label=""

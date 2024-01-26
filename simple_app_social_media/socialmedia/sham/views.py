@@ -70,8 +70,14 @@ def signout(request):
 # profile viewing
 def profile_view(request, id):
     if request.user.is_authenticated:
+        form = LekhForm(request.POST or None)
+        if form.is_valid():
+            le = form.save(commit=False)
+            le.profile = Profile.objects.get(user=request.user)
+            le.save()
+            return redirect("index")
         profile = get_object_or_404(Profile, user_id=id)
         print("profile = ",profile)
         lekhs = Lekh.objects.filter(profile=profile)
         print("lekhs = ", lekhs)
-        return render(request, 'pages/profile.html', {"profile":profile, "lekhs":lekhs})
+        return render(request, 'pages/profile.html', {"profile":profile, "lekhs":lekhs, 'form':form})
