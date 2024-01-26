@@ -20,13 +20,13 @@
         <div>
             {% if lekhs %}
                 {% for lekh in lekhs %}
-                    <div class="lekh">
-                        <div class="profile">{{ lekh.profile }}</div>
+                    <div class="lekh" data-lekh-id="{{ lekh.id }}">
+                        <div class="profile"><a  href="{% url 'profile' lekh.profile.id %}">{{ lekh.profile }}</a></div>
                         <div class="body">{{ lekh.body }}</div>
                         <div class="date">{{ lekh.date_created }}</div>
                         <div class="likes">
-                            <span>{{ lekh.no_of_likes }} Likes</span>
-                            <button class="like-button">Like</button>
+                            <span class="no_of_likes">{{ lekh.no_of_likes }} Likes</span>
+                            <button class="like-button">{% if request.user.profile_set.exists and request.user.profile_set.first in lekh.likes.all %}Unlike{% else %}Like{% endif %}</button>
                         </div>
                     </div>
                 {% endfor %}
@@ -34,3 +34,4 @@
         </div>
     </div>
 {% endblock %}
+

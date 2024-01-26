@@ -37,7 +37,7 @@
                     {% if lekhs %}
                         {% for lekh in lekhs %}
                             <div class="lekh">
-                                <div class="profile">{{ lekh.profile }}</div>
+                                <div class="profile"><a  href="{% url 'profile' lekh.profile.id %}">{{ lekh.profile }}</a></div>
                                 <div class="body">{{ lekh.body }}</div>
                                 <div class="date">{{ lekh.date_created }}</div>
                                 <div class="likes">

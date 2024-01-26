@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404, HttpResponse
 from django.contrib.auth  import authenticate, login, logout
 from .forms import CustomUserForm, LekhForm
 from django.contrib import messages
 from .models import Lekh, Profile
+from django.http import JsonResponse
 
 # Create your views here.
 
@@ -76,8 +77,26 @@ def profile_view(request, id):
             le.profile = Profile.objects.get(user=request.user)
             le.save()
             return redirect("index")
-        profile = get_object_or_404(Profile, user_id=id)
+        profile = get_object_or_404(Profile, id=id)
         print("profile = ",profile)
         lekhs = Lekh.objects.filter(profile=profile)
         print("lekhs = ", lekhs)
         return render(request, 'pages/profile.html', {"profile":profile, "lekhs":lekhs, 'form':form})
+
+# like
+def like_lekh(request, lekh_id):
+    if request.user.is_authenticated:
+        lekh = get_object_or_404(Lekh, id=lekh_id)
+        profile = get_object_or_404(Profile, user=request.user)
+        response_data = {}
+        if lekh.likes.filter(id=profile.id).exists():
+            # If liked, remove the like
+            lekh.likes.remove(profile)
+            response_data = {'message': 'Unliked'}
+        else:
+            # If not liked, add the like
+            lekh.likes.add(profile)
+            response_data = {'message': 'Liked'}
+        return JsonResponse(response_data)
+    else:
+        return redirect("signin")
