@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth  import authenticate, login
 from .forms import CustomUserForm
 from django.contrib import messages
+from .models import Lekh
 
 # Create your views here.
 
@@ -17,7 +18,9 @@ def signin(request):
         if user:
             login(request, user)
             return redirect('index')
-    
+        else:
+            messages.error(request, "Wrong cred")
+            return redirect('signin')
     else:
         if request.user.is_authenticated:
             return redirect('index')
@@ -46,6 +49,7 @@ def register(request):
 # home or index page if user logged
 def index(request):
     if request.user.is_authenticated:
-        return render(request, "pages/index.html", {})
+        lekh = Lekh.objects.all().order_by('-date_created')
+        return render(request, "pages/index.html", {"lekhs":lekh})
     else:
         return redirect("signin")

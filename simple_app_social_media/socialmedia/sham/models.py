@@ -30,4 +30,4 @@ class Lekh(models.Model):
     def no_of_likes(self):
         return self.likes.count()
     def __str__(self) -> str:
-        return self.body
+        return (f"{self.body}")

@@ -5,6 +5,30 @@
 {% block content %}
 <div>
     content
+    {% if lekhs %}
+        {% for lekh in lekhs %}
+            <div>
+                <div>
+                    {{lekh.profile}}
+                </div>
+                <div>
+                    {{lekh.body}}
+                </div>
+                <div>
+                    {{lekh.date_created}}
+                </dvi>
+                <div>
+                    {{lekh.no_of_likes}}
+                </div>
+
+            </div>
+        {% endfor %}
+    {% endif %}
 </div>
 
+{% endblock %}
+{% block script %}
+<script>
+console.log("ok");
+</script>
 {% endblock %}
