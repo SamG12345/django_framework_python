@@ -65,4 +65,4 @@ def index(request):
 def signout(request):
     if request.user.is_authenticated:
         logout(request)
-        return redirect("signin")
+    return redirect("signin")
