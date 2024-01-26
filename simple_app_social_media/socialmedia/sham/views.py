@@ -51,10 +51,8 @@ def index(request):
     if request.user.is_authenticated:
         form = LekhForm(request.POST or None)
         if form.is_valid():
-            print("form")
             le = form.save(commit=False)
-            p = Profile.objects.get(user=request.user)
-            le.profile = p
+            le.profile = Profile.objects.get(user=request.user)
             le.save()
             return redirect("index")
         else:
