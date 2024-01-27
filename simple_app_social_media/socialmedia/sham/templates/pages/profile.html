@@ -54,7 +54,7 @@
                                     {% endif %}
                                     <span>{{ lekh.profile }}</span>
                                 </a></div>
-                                <div class="body">{{ lekh.body }}</div>
+                                <div class="body"><a class="lnk" href="{% url 'lekh_view' lekh.id %}">{{ lekh.body }}</a></div>
                                 <div class="date">{{ lekh.date_created }}</div>
                                 <div class="lake_a">
                                     <div class="likes lake_b">
