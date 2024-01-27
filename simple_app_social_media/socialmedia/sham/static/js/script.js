@@ -11,12 +11,12 @@ document.addEventListener("DOMContentLoaded", function (){
 
     function likeHandler(e, lekhId) {
         console.log("ok = ", lekhId);
-        const url = "like/" + lekhId.dataset.lekhId;
+        const url = "/like/" + lekhId.dataset.lekhId;
         fetch(url, {
             method: "GET"
         }).then(response => response.json()).then(data => {
             console.log(data.message);
-            var likeCountElement = lekhId.querySelector('.no_of_likes');
+            var likeCountElement = lekhId.querySelector('#no_of_likes');
             var likebuttonelement = lekhId.querySelector('.like-button');
             var value = likeCountElement.innerText;
             var split = value.split(" ");

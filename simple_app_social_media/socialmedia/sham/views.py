@@ -106,6 +106,13 @@ def lekh_view(request, lekh_id):
         lekh = get_object_or_404(Lekh, id=lekh_id)
         form = LekhForm(request.POST or None)
         if lekh:
+            if (form.is_valid()):
+                l = form.save(commit=False)
+                l.profile = get_object_or_404(Profile, user=request.user)
+                l.save()
+                l.parent = lekh
+                l.save()
+                return redirect(request.META.get("HTTP_REFERER"))
             re_lekhs = Lekh.objects.filter(parent_id=lekh.id).order_by("-date_created")
             return render(request, "pages/lekh.html", {"lekh": lekh, 'form': form, "re_lekhs": re_lekhs})
     else:

@@ -59,7 +59,7 @@
                                 <div class="lake_a">
                                     <div class="likes lake_b">
                                         <i {% if request.user.profile_set.exists and request.user.profile_set.first in lekh.likes.all %}id="unlike"{% else %}id="like"{% endif %} class="fa fa-thumbs-up lake"></i>
-                                        <span class"like_lab lake">{{ lekh.no_of_likes }} Likes</span>
+                                        <span id="no_of_likes" class"like_lab lake">{{ lekh.no_of_likes }} Likes</span>
                                         <button hidden class="like-button lake">Like</button>
                                     </div>
                                     <div class="leka lake_a likes lake lake_b ">
