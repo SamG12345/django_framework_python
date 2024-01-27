@@ -10,7 +10,7 @@ class Profile(models.Model):
     companian = models.ManyToManyField("self", related_name="companianed_by", symmetrical=False, blank=True)
     date_created = models.DateTimeField("self", auto_now_add=True)
 
-    profile_image = models.ImageField(null=True, blank=True, upload_to='images/profile')
+    profile_image = models.ImageField(null=True, blank=True, upload_to='images/profile_img')
 
     def __str__(self) -> str:
         return self.user.username
