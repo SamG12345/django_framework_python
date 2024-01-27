@@ -57,7 +57,7 @@ def index(request):
             le.save()
             return redirect("index")
         else:
-            lekh = Lekh.objects.all().order_by('-date_created')
+            lekh = Lekh.objects.filter(parent__isnull=True).order_by('-date_created')
             return render(request, "pages/index.html", {"lekhs":lekh, "form":form})
     else:
         return redirect("signin")
@@ -80,7 +80,6 @@ def profile_view(request, id):
         profile = get_object_or_404(Profile, id=id)
         print("profile = ",profile)
         lekhs = Lekh.objects.filter(profile=profile).order_by("-date_created")
-        print("lekhs = ", lekhs)
         return render(request, 'pages/profile.html', {"profile":profile, "lekhs":lekhs, 'form':form})
 
 # like_lekh
@@ -107,6 +106,7 @@ def lekh_view(request, lekh_id):
         lekh = get_object_or_404(Lekh, id=lekh_id)
         form = LekhForm(request.POST or None)
         if lekh:
-            return render(request, "pages/lekh.html", {"lekh": lekh, 'form': form})
+            re_lekhs = Lekh.objects.filter(parent_id=lekh.id).order_by("-date_created")
+            return render(request, "pages/lekh.html", {"lekh": lekh, 'form': form, "re_lekhs": re_lekhs})
     else:
         return redirect("signin")
