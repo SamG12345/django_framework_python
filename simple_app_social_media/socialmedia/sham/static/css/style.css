@@ -112,4 +112,31 @@ form {
     font-size:25px;
     cursor: pointer;
     user-select: none;
-  }
+}
+.prof h1 {
+    margin-bottom: 0; /* Remove default margin */;
+    margin-top: 9px;
+}
+.prof {
+    background-color: silver;
+    padding: 20px; /* Decrease padding */
+    text-align: center;
+}
+
+.profile-img-container {
+    width: 100%; /* Make the container fill the width of .prof */
+    overflow: hidden;
+}
+
+.profile-img-container img {
+    width: 30%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: 30%;
+}
+
+.pimg {
+    border-radius: 41%;
+    width: 12%;
+}

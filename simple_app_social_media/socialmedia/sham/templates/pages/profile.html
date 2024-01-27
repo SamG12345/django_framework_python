@@ -7,9 +7,13 @@
 <div class="profile-info">
     {% if profile %}
         <div class="prof center">
-            {% if profile.profile_image %}
-                <span><img src={{profile.profile_image.url}}></img></span>
-            {% endif %}
+            <div class="profile-img-container">
+                {% if profile.profile_image %}
+                    <span><img src={{profile.profile_image.url}}></img></span>
+                {% else %}
+                    <span><img src={% static 'image/default.png' %}></img></span>
+                {% endif %}
+            </div>
             <h1>{{ profile.user }}</h1>
         </div>
         <div class="left">
@@ -42,7 +46,14 @@
                     {% if lekhs %}
                         {% for lekh in lekhs %}
                             <div class="lekh">
-                                <div class="profile"><a  href="{% url 'profile' lekh.profile.id %}">{{ lekh.profile }}</a></div>
+                                <div class="profile"><a class="center" href="{% url 'profile' lekh.profile.id %}">
+                                    {% if lekh.profile.profile_image %}
+                                        <img class="pimg" src={{ lekh.profile.profile_image.url }}></img>
+                                    {% else %}
+                                        <img class="pimg" src={% static 'image/default.png' %}></img>
+                                    {% endif %}
+                                    <span>{{ lekh.profile }}</span>
+                                </a></div>
                                 <div class="body">{{ lekh.body }}</div>
                                 <div class="date">{{ lekh.date_created }}</div>
                                 <div class="likes">
