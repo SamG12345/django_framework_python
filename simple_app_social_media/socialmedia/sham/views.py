@@ -79,7 +79,7 @@ def profile_view(request, id):
             return redirect("index")
         profile = get_object_or_404(Profile, id=id)
         print("profile = ",profile)
-        lekhs = Lekh.objects.filter(profile=profile)
+        lekhs = Lekh.objects.filter(profile=profile).order_by("-date_created")
         print("lekhs = ", lekhs)
         return render(request, 'pages/profile.html', {"profile":profile, "lekhs":lekhs, 'form':form})
 
