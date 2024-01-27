@@ -21,18 +21,20 @@
                 {% endif %}
             </div>
             <div class="center">
-                <div>
-                    <form method="post">
-                        {% csrf_token %}
-                        <div>
-                            {{ form.body.label_tag }}
-                            {{ form.body }}
-                        </div>
-                        <div>
-                            <button type="submit">Post Lekh</button>
-                        </div>
-                    </form>
-                </div>
+                {% if user == profile.user %}
+                    <div>
+                        <form method="post">
+                            {% csrf_token %}
+                            <div>
+                                {{ form.body.label_tag }}
+                                {{ form.body }}
+                            </div>
+                            <div>
+                                <button type="submit">Post Lekh</button>
+                            </div>
+                        </form>
+                    </div>
+                {% endif %}
                 <div>
                     {% if lekhs %}
                         {% for lekh in lekhs %}
