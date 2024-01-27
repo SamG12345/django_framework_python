@@ -24,8 +24,15 @@
             {% if lekhs %}
                 {% for lekh in lekhs %}
                     <div class="lekh" data-lekh-id="{{ lekh.id }}">
-                        <div class="profile"><a  href="{% url 'profile' lekh.profile.id %}">{{ lekh.profile }}</a></div>
-                        <div class="body"><a href="{% url 'leakh' lekh.id %}">{{ lekh.body }}</a></div>
+                        <div class="profile"><a class="center lnk" href="{% url 'profile' lekh.profile.id %}">
+                            {% if lekh.profile.profile_image %}
+                                <img class="pimg" src={{ lekh.profile.profile_image.url }}></img>
+                            {% else %}
+                                <img class="pimg" src={% static 'image/default.png' %}></img>
+                            {% endif %}
+                            <span>{{ lekh.profile }}</span>
+                        </a></div>
+                        <div class="body"><a class="lnk" href="{% url 'lekh_view' lekh.id %}">{{ lekh.body }}</a></div>
                         <div class="date">{{ lekh.date_created }}</div>
                         <div class="lake_a">
                             <div class="likes lake_b">

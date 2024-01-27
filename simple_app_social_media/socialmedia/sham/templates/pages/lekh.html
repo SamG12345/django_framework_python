@@ -12,7 +12,7 @@
             {% if lekh %}
                 <div class="lekh" data-lekh-id="{{ lekh.id }}">
                     <div class="profile"><a  href="{% url 'profile' lekh.profile.id %}">{{ lekh.profile }}</a></div>
-                    <div class="body">{{ lekh.body }}</div>
+                    <div class="body lnk">{{ lekh.body }}</div>
                     <div class="date">{{ lekh.date_created }}</div>
                     <div class="lake_a">
                         <div class="likes lake_b">
