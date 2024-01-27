@@ -7,6 +7,9 @@
 <div class="profile-info">
     {% if profile %}
         <div class="prof center">
+            {% if profile.profile_image %}
+                <span><img src={{profile.profile_image.url}}></img></span>
+            {% endif %}
             <h1>{{ profile.user }}</h1>
         </div>
         <div class="left">
