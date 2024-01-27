@@ -11,7 +11,7 @@
         <div>
             {% if lekh %}
                 <div class="lekh" data-lekh-id="{{ lekh.id }}">
-                    <div class="profile"><a  href="{% url 'profile' lekh.profile.id %}">{{ lekh.profile }}</a></div>
+                    <div class="profile"><a class="lnk" href="{% url 'profile' lekh.profile.id %}">{{ lekh.profile }}</a></div>
                     <div class="body lnk">{{ lekh.body }}</div>
                     <div class="date">{{ lekh.date_created }}</div>
                     <div class="lake_a">
@@ -45,7 +45,7 @@
             {% if re_lekhs %}
                 {% for re_lekh in re_lekhs %}
                     <div class="lekh" data-lekh-id="{{ re_lekh.id }}">
-                        <div class="profile"><a  href="{% url 'profile' re_lekh.profile.id %}">{{ re_lekh.profile }}</a></div>
+                        <div class="profile"><a class="lnk"  href="{% url 'profile' re_lekh.profile.id %}">{{ re_lekh.profile }}</a></div>
                         <div class="body">{{ re_lekh.body }}</div>
                         <div class="date">{{ re_lekh.date_created }}</div>
                         <div class="lake_a">
