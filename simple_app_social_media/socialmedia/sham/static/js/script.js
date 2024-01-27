@@ -36,4 +36,37 @@ document.addEventListener("DOMContentLoaded", function (){
         });
     }
 
+    var fa = document.querySelectorAll(".fa");
+    if (fa){
+        fa.forEach(element => {
+            if (element.id == "like"){
+                like_button_initi(element, false);
+            }
+            else{
+                like_button_initi(element, true);
+            }
+            element.addEventListener("click", (e)=>{
+                var lekhId = e.currentTarget.closest('.lekh');
+                likeHandler(e, lekhId);
+                var c = element.style.color;
+                if (c=="crimson"){
+                    element.style.color = "#888";
+                }
+                else{
+                    element.style.color="crimson";
+                }
+            });
+        });
+        
+    }
+    function like_button_initi(x, b){
+        if (b){
+            x.style.color="crimson";
+        }
+        else{
+            x.style.color = "#888";
+        }
+    }
+
 })
+

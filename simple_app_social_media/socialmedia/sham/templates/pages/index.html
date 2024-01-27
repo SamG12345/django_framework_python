@@ -25,8 +25,9 @@
                         <div class="body">{{ lekh.body }}</div>
                         <div class="date">{{ lekh.date_created }}</div>
                         <div class="likes">
+                            <i {% if request.user.profile_set.exists and request.user.profile_set.first in lekh.likes.all %}id="unlike"{% else %}id="like"{% endif %} class="fa fa-thumbs-up"></i>
                             <span class="no_of_likes">{{ lekh.no_of_likes }} Likes</span>
-                            <button class="like-button">{% if request.user.profile_set.exists and request.user.profile_set.first in lekh.likes.all %}Unlike{% else %}Like{% endif %}</button>
+                            <button hidden class="like-button">{% if request.user.profile_set.exists and request.user.profile_set.first in lekh.likes.all %}Unlike{% else %}Like{% endif %}</button>
                         </div>
                     </div>
                 {% endfor %}

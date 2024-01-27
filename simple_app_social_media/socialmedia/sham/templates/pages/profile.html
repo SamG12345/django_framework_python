@@ -41,8 +41,9 @@
                                 <div class="body">{{ lekh.body }}</div>
                                 <div class="date">{{ lekh.date_created }}</div>
                                 <div class="likes">
+                                    <i {% if request.user.profile_set.exists and request.user.profile_set.first in lekh.likes.all %}id="unlike"{% else %}id="like"{% endif %} class="fa fa-thumbs-up"></i>
                                     <span>{{ lekh.no_of_likes }} Likes</span>
-                                    <button class="like-button">Like</button>
+                                    <button hidden class="like-button">Like</button>
                                 </div>
                             </div>
                         {% endfor %}

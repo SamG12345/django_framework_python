@@ -55,7 +55,11 @@ form {
 .lekh {
     border: 1px solid #ddd;
     margin-bottom: 20px;
-    padding: 10px;
+    padding: 21px;
+    max-width: 600px; /* Set a maximum width for the content inside .body */
+    margin: 0 auto; /* Center the content horizontally */
+    overflow-wrap: break-word; /* Wrap long words to prevent overflow */
+    text-align: left;
 }
 
 .lekh .profile {
@@ -63,15 +67,18 @@ form {
 }
 
 .lekh .body {
-    margin-top: 10px;
+    margin-top: 21px;
+    
 }
 
 .lekh .date {
+    margin-top: 13px;
     color: #888;
     font-size: 13px;
 }
 
 .lekh .likes {
+    margin-top: 5px;
     color: #888;
     font-size: 13px;
 }
@@ -101,3 +108,8 @@ form {
     background-color: silver;
     padding: 50px;
 }
+.fa {
+    font-size:25px;
+    cursor: pointer;
+    user-select: none;
+  }
