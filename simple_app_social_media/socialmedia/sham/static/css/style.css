@@ -140,3 +140,26 @@ form {
     border-radius: 41%;
     width: 12%;
 }
+.lake_a{
+    display: flex;
+}
+.lake {
+    padding : 2px;
+    padding-left: 2px;
+}
+.lake_b {
+    border: 1px solid #ddd;
+}
+.la_s {
+    margin-bottom: 0;
+    padding-top: 9px;
+    padding-right: 11px;
+}
+
+.cmt {
+    margin: 3px;
+}
+.lnk {
+    text-decoration: none;
+    color: #333;
+}
