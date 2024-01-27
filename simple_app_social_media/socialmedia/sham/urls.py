@@ -18,3 +18,6 @@ urlpatterns += [ path("profile/<int:id>", views.profile_view, name="profile"), ]
 
 # like lekh
 urlpatterns += [ path("like/<int:lekh_id>", views.like_lekh, name="like_lekh"), ]
+
+# lekh view
+urlpatterns += [ path("lekh/<int:lekh_id>", views.lekh_view, name="lekh_view"), ]
