@@ -5,6 +5,9 @@
 
 {% block content %}
     <div class="container center">
+        <div class="index_pp_container">
+            <span><img class="index_pp" src={{request.user.profile_set.first.profile_image.url}}></img></span>
+        </div>
         <div>
             <form method="post">
                 {% csrf_token %}

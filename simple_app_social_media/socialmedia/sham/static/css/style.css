@@ -163,3 +163,11 @@ form {
     text-decoration: none;
     color: #333;
 }
+.index_pp {
+    margin: 7px;
+    width: 8%;
+    border-radius: 50%;
+}
+.index_pp_container {
+    text-align: justify;
+}
