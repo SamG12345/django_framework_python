@@ -83,7 +83,7 @@ def profile_view(request, id):
         print("lekhs = ", lekhs)
         return render(request, 'pages/profile.html', {"profile":profile, "lekhs":lekhs, 'form':form})
 
-# like
+# like_lekh
 def like_lekh(request, lekh_id):
     if request.user.is_authenticated:
         lekh = get_object_or_404(Lekh, id=lekh_id)
@@ -98,5 +98,15 @@ def like_lekh(request, lekh_id):
             lekh.likes.add(profile)
             response_data = {'message': 'Liked'}
         return JsonResponse(response_data)
+    else:
+        return redirect("signin")
+
+# lekh_view
+def lekh_view(request, lekh_id):
+    if request.user.is_authenticated:
+        lekh = get_object_or_404(Lekh, id=lekh_id)
+        form = LekhForm(request.POST or None)
+        if lekh:
+            return render(request, "pages/lekh.html", {"lekh": lekh, 'form': form})
     else:
         return redirect("signin")
