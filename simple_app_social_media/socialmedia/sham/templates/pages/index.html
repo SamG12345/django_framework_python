@@ -25,7 +25,7 @@
                 {% for lekh in lekhs %}
                     <div class="lekh" data-lekh-id="{{ lekh.id }}">
                         <div class="profile"><a  href="{% url 'profile' lekh.profile.id %}">{{ lekh.profile }}</a></div>
-                        <div class="body"><a href="{% url 'lekh' lekh.id %}"> {{ lekh.body }}</a></div>
+                        <div class="body"><a href="{% url 'leakh' lekh.id %}">{{ lekh.body }}</a></div>
                         <div class="date">{{ lekh.date_created }}</div>
                         <div class="lake_a">
                             <div class="likes lake_b">
