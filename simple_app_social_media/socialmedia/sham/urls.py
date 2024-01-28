@@ -16,6 +16,9 @@ urlpatterns += [ path("signout", views.signout, name="signout"), ]
 # profile
 urlpatterns += [ path("profile/<int:id>", views.profile_view, name="profile"), ]
 
+# profile image update
+urlpatterns += [ path("profile_image_upload", views.upload_pp, name="profile_image_upload"), ]
+
 # like lekh
 urlpatterns += [ path("like/<int:lekh_id>", views.like_lekh, name="like_lekh"), ]
 
