@@ -57,9 +57,10 @@ form {
     margin-bottom: 20px;
     padding: 21px;
     max-width: 600px; /* Set a maximum width for the content inside .body */
-    margin: 0 auto; /* Center the content horizontally */
+    margin: 7px auto; /* Center the content horizontally */
     overflow-wrap: break-word; /* Wrap long words to prevent overflow */
     text-align: left;
+    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 11px 0 rgba(0, 0, 0, 0.19);
 }
 
 .lekh .profile {
