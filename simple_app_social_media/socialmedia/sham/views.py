@@ -117,3 +117,16 @@ def lekh_view(request, lekh_id):
             return render(request, "pages/lekh.html", {"lekh": lekh, 'form': form, "re_lekhs": re_lekhs})
     else:
         return redirect("signin")
+    
+# delete lekh
+def delete_lekh(request, lekh_id):
+    if request.user.is_authenticated:
+        lekh = get_object_or_404(Lekh, id=lekh_id)
+        if lekh and lekh.profile.user == request.user:
+            lekh.delete()
+            return redirect(request.META.get("HTTP_REFERER"))
+        else:
+            return redirect(request.META.get("HTTP_REFERER"))
+    else:
+        return redirect("signin")
+
