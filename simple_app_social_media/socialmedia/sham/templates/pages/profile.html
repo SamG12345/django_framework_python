@@ -62,12 +62,12 @@
                                         <span id="no_of_likes" class"like_lab lake" style="padding-right: 11px;">{{ lekh.no_of_likes }} Likes</span>
                                         <button hidden class="like-button lake">Like</button>
                                     </div>
-                                    <div class="leka lake_a likes lake lake_b ">
+                                    <a class="lnk" href="{% url 'lekh_view' lekh.id %}"><div class="leka lake_a likes lake lake_b ">
                                         <span>
-                                            <i class="gg-comment cmt"></i>
+                                            <i onClick="" class="gg-comment cmt"></i>
                                         </span>
                                         <span class="lake la_s"> Comment</span>
-                                    </div>
+                                    </div></a>
                                     <div class="leka lake_a likes lake lake_b ">
                                         <span>
                                             <i class="glyphicon glyphicon-trash ic_sz"></i>
