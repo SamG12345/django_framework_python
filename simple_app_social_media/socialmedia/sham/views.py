@@ -122,10 +122,13 @@ def lekh_view(request, lekh_id):
 def delete_lekh(request, lekh_id):
     if request.user.is_authenticated:
         lekh = get_object_or_404(Lekh, id=lekh_id)
+        response_data = {}
         if lekh and lekh.profile.user == request.user:
             lekh.delete()
-        print(request.META.get("HTTP_REFERER"))
-        return redirect("index")
+            response_data = {'message': 'Deleted'}
+        else:
+            response_data = {'message': 'error'}
+        return JsonResponse(response_data)
     else:
         return redirect("signin")
 

@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function (){
     var l_rm_c = document.querySelectorAll("#l_rm");
     if (l_rm_c){
         l_rm_c.forEach(element => {
-            element.addEventListener("click", ()=>{
+            element.addEventListener("click", (e)=>{
                 console.log("ok");
                 var ol = document.querySelector(".overlay");
                 ol.style.display = "block";
@@ -84,25 +84,28 @@ document.addEventListener("DOMContentLoaded", function (){
                     console.log("ok");
                     ol.style.display = "none";
                 });
-                oll[1].addEventListener("click", ()=>{
-                    console.log("ok");
-                    ol.style.display = "none";
+                oll[1].addEventListener("click", (e)=>{
+                    var lekhId = e.currentTarget.closest('.lekh');
+                    console.log("ok = ", lekhId);
+                    l_rm(e, lekhId);
                 });
                 
             })
         })
     }
     // lekh del
-    function l_rm (lekhid){
-        const url = "delete/" + lekhid;
+    function l_rm (e, lekhid){
+        const url = "/leakh/delete/" + lekhid.dataset.lekhId;
         fetch(url, {
             method: "GET"
         }).then(response => response.json()).then(data => {
-            if (data.message == "deleted"){
-                console.log("ok");
+            console.log(data);
+            if (data.message == "Deleted"){
+                e.srcElement.parentElement.parentElement.parentElement.style.display = "none";
+                lekhid.style.display = "none";
             }
-            else {
-                console.log("no");
+            else{
+                e.style.display = "none";
             }
         })
     }
