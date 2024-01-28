@@ -96,6 +96,8 @@ form {
 .companions {
     float: right;
     /* Add more styles as needed */
+    box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.2), 0 0px 11px 0 rgba(0, 0, 0, 0.19);
+    padding: 15px;
 }
 
 .companions div {

@@ -23,7 +23,7 @@
             <div class="companions right">
                 {% if profile.companian %}
                     {% for com in profile.companian.all %}
-                        <div>{{ com }}</div>
+                        <a class="lnk" href="{% url 'profile' com.id %}"><div> @ {{ com }}</div></a>
                     {% endfor %}
                 {% endif %}
             </div>
