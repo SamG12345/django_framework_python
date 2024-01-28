@@ -45,7 +45,7 @@
                 <div>
                     {% if lekhs %}
                         {% for lekh in lekhs %}
-                            <div class="lekh">
+                            <div class="lekh" data-lekh-id="{{ lekh.id }}">
                                 <div class="profile"><a class="center lnk" href="{% url 'profile' lekh.profile.id %}">
                                     {% if lekh.profile.profile_image %}
                                         <img class="pimg" src={{ lekh.profile.profile_image.url }}></img>

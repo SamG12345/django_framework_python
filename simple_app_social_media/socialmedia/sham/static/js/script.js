@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function (){
     }
 
     function likeHandler(e, lekhId) {
-        console.log("ok = ", lekhId);
         const url = "/like/" + lekhId.dataset.lekhId;
         fetch(url, {
             method: "GET"
