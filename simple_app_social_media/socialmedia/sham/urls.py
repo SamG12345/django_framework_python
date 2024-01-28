@@ -21,3 +21,6 @@ urlpatterns += [ path("like/<int:lekh_id>", views.like_lekh, name="like_lekh"), 
 
 # lekh view
 urlpatterns += [ path("leakh/<int:lekh_id>", views.lekh_view, name="lekh_view"), ]
+
+# lekh delete
+urlpatterns += [ path("leakh/delete/<int:lekh_id>", views.delete_lekh, name="delete_lekh"), ]
