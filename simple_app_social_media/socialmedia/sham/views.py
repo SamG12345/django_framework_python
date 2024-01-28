@@ -118,5 +118,14 @@ def lekh_view(request, lekh_id):
     else:
         return redirect("signin")
     
-
+# delete lekh
+def delete_lekh(request, lekh_id):
+    if request.user.is_authenticated:
+        lekh = get_object_or_404(Lekh, id=lekh_id)
+        if lekh and lekh.profile.user == request.user:
+            lekh.delete()
+        print(request.META.get("HTTP_REFERER"))
+        return redirect("index")
+    else:
+        return redirect("signin")
 
