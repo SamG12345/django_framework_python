@@ -47,11 +47,17 @@
                                 <span class="lake la_s"> Comment</span>
                             </div></a>
                             {% if lekh.profile.user == user %}
-                                <div class="leka lake_a likes lake lake_b ">
+                                <div id="cl_rm" class="leka lake_a likes lake lake_b ">
                                     <span>
                                         <i class="glyphicon glyphicon-trash ic_sz"></i>
                                     </span>
                                     <span class="lake la_s"> Delete</span>
+                                </div>
+                                <div style="display: none;" class="overlay">
+                                    <div>
+                                        <div><button id"rm_c">cancel</button></div>
+                                        <div><button id"rm_o">ok</button></div>
+                                    </div>
                                 </div>
                             {% endif %}
                         </div>

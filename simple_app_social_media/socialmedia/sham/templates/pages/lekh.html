@@ -34,11 +34,17 @@
                             <span class="lake la_s"> Comment</span>
                         </div>
                         {% if lekh.profile.user == user %}
-                            <div class="leka lake_a likes lake lake_b ">
+                            <div id="l_rm" class="leka lake_a likes lake lake_b ">
                                 <span>
                                     <i class="glyphicon glyphicon-trash ic_sz"></i>
                                 </span>
                                 <span class="lake la_s"> Delete</span>
+                            </div>
+                            <div style="display: none;" class="overlay">
+                                <div>
+                                    <div><button id"rm_c">cancel</button></div>
+                                    <div><button id"rm_o">ok</button></div>
+                                </div>
                             </div>
                         {% endif %}
                     </div>
@@ -59,7 +65,7 @@
         <div>
             {% if re_lekhs %}
                 {% for re_lekh in re_lekhs %}
-                    <div class="lekh" data-lekh-id="{{ re_lekh.id }}">
+                    <div id="re_lekh" class="lekh" data-lekh-id="{{ re_lekh.id }}">
                         <div class="profile"><a class="lnk"  href="{% url 'profile' re_lekh.profile.id %}">{{ re_lekh.profile }}</a></div>
                         <div class="body"><a class="lnk" href="{% url 'lekh_view' re_lekh.id %}">{{ re_lekh.body }}</a></div>
                         <div class="date">{{ re_lekh.date_created }}</div>
@@ -76,11 +82,17 @@
                                 <span class="lake la_s"> Comment</span>
                             </div></a>
                             {% if re_lekh.profile.user == user %}
-                                <div class="leka lake_a likes lake lake_b ">
+                                <div id="cl_rm" class="leka lake_a likes lake lake_b ">
                                     <span>
                                         <i class="glyphicon glyphicon-trash ic_sz"></i>
                                     </span>
                                     <span class="lake la_s"> Delete</span>
+                                </div>
+                                <div style="display: none;" class="overlay">
+                                    <div>
+                                        <div><button id"rm_cc">cancel</button></div>
+                                        <div><button id"rm_co">ok</button></div>
+                                    </div>
                                 </div>
                             {% endif %}
                         </div>

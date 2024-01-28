@@ -75,18 +75,14 @@ document.addEventListener("DOMContentLoaded", function (){
     if (l_rm_c){
         l_rm_c.forEach(element => {
             element.addEventListener("click", (e)=>{
-                console.log("ok");
                 var ol = document.querySelector(".overlay");
                 ol.style.display = "block";
-                console.log(ol);
                 var oll = ol.getElementsByTagName("button");
                 oll[0].addEventListener("click", ()=>{
-                    console.log("ok");
                     ol.style.display = "none";
                 });
                 oll[1].addEventListener("click", (e)=>{
                     var lekhId = e.currentTarget.closest('.lekh');
-                    console.log("ok = ", lekhId);
                     l_rm(e, lekhId);
                 });
                 
@@ -99,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function (){
         fetch(url, {
             method: "GET"
         }).then(response => response.json()).then(data => {
-            console.log(data);
             if (data.message == "Deleted"){
                 e.srcElement.parentElement.parentElement.parentElement.style.display = "none";
                 lekhid.style.display = "none";
@@ -109,7 +104,27 @@ document.addEventListener("DOMContentLoaded", function (){
             }
         })
     }
-
+    // lekh remove confr
+    var cl_rm_c = document.querySelectorAll("#cl_rm");
+    console.log("cr = ",cl_rm_c);
+    if (cl_rm_c){
+        cl_rm_c.forEach(element => {
+            element.addEventListener("click", (e)=>{
+                var ol = document.querySelector(".overlay");
+                ol.style.display = "block";
+                var oll = ol.getElementsByTagName("button");
+                oll[0].addEventListener("click", ()=>{
+                    ol.style.display = "none";
+                });
+                oll[1].addEventListener("click", (e)=>{
+                    console.log(e);
+                    var i = cl_rm_c[0].parentElement.parentElement;
+                    l_rm(e, i);
+                });
+                
+            })
+        })
+    }
 
 })
 

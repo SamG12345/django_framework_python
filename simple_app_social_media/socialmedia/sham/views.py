@@ -76,7 +76,7 @@ def profile_view(request, id):
             le = form.save(commit=False)
             le.profile = Profile.objects.get(user=request.user)
             le.save()
-            return redirect("index")
+            return redirect(request.META.get("HTTP_REFERER"))
         profile = get_object_or_404(Profile, id=id)
         print("profile = ",profile)
         lekhs = Lekh.objects.filter(profile=profile).order_by("-date_created")
