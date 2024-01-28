@@ -112,7 +112,7 @@ form {
     padding: 50px;
 }
 .fa {
-    font-size:25px;
+    font-size:27px;
     cursor: pointer;
     user-select: none;
 }
@@ -166,6 +166,10 @@ form {
     text-decoration: none;
     color: #333;
 }
+.lnk:hover {
+    text-decoration: none;
+    color: #333;
+}
 .index_pp {
     margin: 7px;
     width: 5%;
@@ -173,4 +177,12 @@ form {
 }
 .index_pp_container {
     text-align: justify;
+}
+.glyphicon {
+    top: 4px;
+    font-size: 18px;
+}
+.fmr {
+    display: flex;
+    justify-content: center;
 }

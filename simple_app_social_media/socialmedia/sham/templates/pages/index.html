@@ -8,7 +8,7 @@
         <div class="index_pp_container">
             <a href="{% url 'profile' request.user.profile_set.first.id %}" ><span><img class="index_pp" src={{request.user.profile_set.first.profile_image.url}}></img></span></a>
         </div>
-        <div>
+        <div class="fmr">
             <form method="post">
                 {% csrf_token %}
                 <div>
@@ -37,7 +37,7 @@
                         <div class="lake_a">
                             <div class="likes lake_b">
                                 <i {% if request.user.profile_set.exists and request.user.profile_set.first in lekh.likes.all %}id="unlike"{% else %}id="like"{% endif %} class="fa fa-thumbs-up lake"></i>
-                                <span id="no_of_likes" class"like_lab lake">{{ lekh.no_of_likes }} Likes</span>
+                                <span style="padding-right: 11px;" id="no_of_likes" class"like_lab lake" >{{ lekh.no_of_likes }} Likes</span>
                                 <button hidden class="like-button lake">Like</button>
                             </div>
                             <a class="lnk" href="{% url 'lekh_view' lekh.id %}"><div class="leka lake_a likes lake lake_b ">
