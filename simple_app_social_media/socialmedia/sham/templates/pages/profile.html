@@ -8,6 +8,13 @@
     {% if profile %}
         <div class="prof center">
             <div class="profile-img-container">
+                <div style="display: none;" id="pp" class="overlay">
+                    <div>
+                        <div><button id"up_pp">change</button></div>
+                        <div><button id"v_pp">view</button></div>
+                        <div id="pl"><form method="post" enctype="multipart/form-data"><input type="file"></form></div>
+                    </div>
+                </div>
                 {% if profile.profile_image %}
                     <span><img src={{profile.profile_image.url}}></img></span>
                 {% else %}

@@ -98,6 +98,15 @@ document.addEventListener("DOMContentLoaded", function (){
             if (data.message == "Deleted"){
                 e.srcElement.parentElement.parentElement.parentElement.style.display = "none";
                 lekhid.style.display = "none";
+                var loc = window.location.href;
+                var loc_arr = loc.split("/");
+                if(loc_arr.length>3){
+                    for (let i=loc_arr.length; i>3; i--){
+                        console.log(i);
+                        loc_arr.pop(i-1);
+                    }
+                    window.location.href = loc_arr.join("/");
+                }
             }
             else{
                 e.style.display = "none";
@@ -106,7 +115,6 @@ document.addEventListener("DOMContentLoaded", function (){
     }
     // lekh remove confr
     var cl_rm_c = document.querySelectorAll("#cl_rm");
-    console.log("cr = ",cl_rm_c);
     if (cl_rm_c){
         cl_rm_c.forEach(element => {
             element.addEventListener("click", (e)=>{
@@ -125,6 +133,42 @@ document.addEventListener("DOMContentLoaded", function (){
             })
         })
     }
+    var pp = document.querySelector(".profile-img-container");
+    if(pp){
+        console.log("ok", pp);
+        var ppp = document.querySelector("#pp");
+        ppp.style.display = "block";
+        console.log(ppp);
+        ppp_ch = ppp.children[0].children;
+        ppp_ch[0].addEventListener("click", ()=>{
+            pp_chng();
+        })
+        ppp_ch[1].addEventListener("click", ()=> {
+            ppv(pp);
+        })
+        ppp_ch[2].children[0].children[0].addEventListener("change", (e) => {
+            console.log("ok", ppp_ch[2].children[0]);
+            var f = new FormData(ppp_ch[2].children[0]);
+            console.log(f);
+            pp_chng(f);
 
+        })
+        console.log(ppp_ch);
+    }
+
+    function ppv(pp){
+        var a = pp.children[1].children[0].src;
+        window.location.href = a;
+    }
+    function pp_chng(f){
+        fetch("profile_image_upload", {
+            method: "POST",
+            body: f
+        }).then(response => response.json()).then(data => {
+            if (data.message == "uploaded"){
+                window.location.herf=window.location.herf;
+            }
+        })
+    }
 })
 
