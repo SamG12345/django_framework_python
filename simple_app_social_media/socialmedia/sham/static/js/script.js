@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function (){
         window.location.href = a;
     }
     function pp_chng(f){
-        fetch("profile_image_upload", {
+        fetch("//profile_image_upload", {
             method: "POST",
             body: f
         }).then(response => response.json()).then(data => {
