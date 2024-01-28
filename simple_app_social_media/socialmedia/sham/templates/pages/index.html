@@ -46,6 +46,14 @@
                                 </span>
                                 <span class="lake la_s"> Comment</span>
                             </div></a>
+                            {% if lekh.profile.user == user %}
+                                <div class="leka lake_a likes lake lake_b ">
+                                    <span>
+                                        <i class="glyphicon glyphicon-trash ic_sz"></i>
+                                    </span>
+                                    <span class="lake la_s"> Delete</span>
+                                </div>
+                            {% endif %}
                         </div>
                     </div>
                 {% endfor %}

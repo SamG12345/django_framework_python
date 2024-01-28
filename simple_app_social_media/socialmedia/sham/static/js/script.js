@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function (){
+    // Like action
     var likeButtons = document.querySelectorAll(".like-button");
     if (likeButtons) {
         likeButtons.forEach(element => {
@@ -35,6 +36,7 @@ document.addEventListener("DOMContentLoaded", function (){
         });
     }
 
+    // like icon action
     var fa = document.querySelectorAll(".fa");
     if (fa){
         fa.forEach(element => {
@@ -58,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function (){
         });
         
     }
+    // like icon css
     function like_button_initi(x, b){
         if (b){
             x.style.color="crimson";
@@ -66,6 +69,44 @@ document.addEventListener("DOMContentLoaded", function (){
             x.style.color = "#888";
         }
     }
+
+    // lekh remove confr
+    var l_rm_c = document.querySelectorAll("#l_rm");
+    if (l_rm_c){
+        l_rm_c.forEach(element => {
+            element.addEventListener("click", ()=>{
+                console.log("ok");
+                var ol = document.querySelector(".overlay");
+                ol.style.display = "block";
+                console.log(ol);
+                var oll = ol.getElementsByTagName("button");
+                oll[0].addEventListener("click", ()=>{
+                    console.log("ok");
+                    ol.style.display = "none";
+                });
+                oll[1].addEventListener("click", ()=>{
+                    console.log("ok");
+                    ol.style.display = "none";
+                });
+                
+            })
+        })
+    }
+    // lekh del
+    function l_rm (lekhid){
+        const url = "delete/" + lekhid;
+        fetch(url, {
+            method: "GET"
+        }).then(response => response.json()).then(data => {
+            if (data.message == "deleted"){
+                console.log("ok");
+            }
+            else {
+                console.log("no");
+            }
+        })
+    }
+
 
 })
 
