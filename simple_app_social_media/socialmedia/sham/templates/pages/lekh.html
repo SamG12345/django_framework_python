@@ -6,7 +6,7 @@
 {% block content %}
     <div class="container center">
         <div class="index_pp_container">
-            <span><img class="index_pp" src={{request.user.profile_set.first.profile_image.url}}></img></span>
+            <a href="{% url 'profile' request.user.profile_set.first.id %}" ><span><img class="index_pp" src={{request.user.profile_set.first.profile_image.url}}></img></span></a>
         </div>
         <div>
             {% if lekh %}
