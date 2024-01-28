@@ -69,6 +69,3 @@ document.addEventListener("DOMContentLoaded", function (){
 
 })
 
-function cmt(){
-    console.log("ok")
-}
