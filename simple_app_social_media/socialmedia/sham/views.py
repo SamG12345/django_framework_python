@@ -137,6 +137,7 @@ def upload_pp(request):
     if (request.user.is_authenticated):
         if request.method == "POST":
             profile = get_object_or_404(Profile, user=request.user)
+            profile.profile_image.delete()
             profile.profile_image = request.FILES.get("pp")
             profile.save()
             return JsonResponse({'message': 'uploaded'})
