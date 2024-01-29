@@ -156,15 +156,16 @@ def profile_list(request):
 
 # pany
 def compain(request, id):
+    print("ok")
     if request.user.is_authenticated:
         profile = get_object_or_404(Profile, user=request.user)
-        comp_profile = get_object_or_404(Profile, user_id = id)
+        comp_profile = get_object_or_404(Profile, id = id)
         response_data = {}
-        if comp_profile in profile.companian.all:
+        if profile.companian.filter(id=comp_profile.id).exists():
             profile.companian.remove(comp_profile)
-            response_data = {'message': 'compaining'}
+            response_data = {'message': 'uncompaining'}
         else:
             profile.companian.add(comp_profile)
-            response_data = {'message': 'error'}
+            response_data = {'message': 'compaining'}
         return JsonResponse(response_data)
     return redirect("signin")

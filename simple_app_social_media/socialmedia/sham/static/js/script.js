@@ -174,8 +174,22 @@ document.addEventListener("DOMContentLoaded", function (){
             }
         })
     }
-    document.querySelector("#comp").addEventListener("click", ()=>{
-        console.log("ok");
+    document.querySelector("#comp").addEventListener("click", (e)=>{
+        
+        console.log(e.target.parentElement.parentElement.id);
+        var id = e.target.parentElement.parentElement.id;
+        var url = "/comp/"+id;
+        fetch(url, {
+            method: "GET",
+        }).then(response => response.json()).then(data => {
+            if (data.message == "compaining"){
+                e.target.innerText = "uncompane";
+            }
+            else{
+                e.target.innerText = "compane";
+            }
+            console.log(data);
+        })
     })
 })
 

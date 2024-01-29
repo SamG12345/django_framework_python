@@ -11,7 +11,7 @@
             {% for profile in profiles %}
                 <div class="companions">
                     <div>
-                        <div class="profile"><a class="center lnk" href="{% url 'profile' profile.id %}">
+                        <div class="profile" id="{{profile.id}}"><a class="center lnk" href="{% url 'profile' profile.id %}">
                             {% if profile.profile_image %}
                                 <img class="pimg" src={{ profile.profile_image.url }}></img>
                             {% else %}
