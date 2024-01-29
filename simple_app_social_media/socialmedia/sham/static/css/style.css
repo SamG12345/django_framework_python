@@ -196,3 +196,8 @@ form {
     display: none; /* Initially hide the overlay */
     z-index: 999; /* Adjust the z-index to ensure it overlays other elements */
 }
+.profiles {
+    display: flex;
+    flex-direction: column;
+    text-align: justify;
+}

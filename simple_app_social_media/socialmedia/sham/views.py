@@ -148,7 +148,8 @@ def upload_pp(request):
 # profile list
 def profile_list(request):
     if (request.user.is_authenticated):
-        proifles = Profile.objects.exclude(user=request.user)
-        return render(request, 'pages/profile_list.html', {'profiles':proifles})
+        profiles = Profile.objects.exclude(user=request.user)
+        print("profile = ", profiles)
+        return render(request, 'pages/profile_list.html', {'profiles':profiles})
     else:
         return redirect("signin")

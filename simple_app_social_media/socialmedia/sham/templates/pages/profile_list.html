@@ -5,19 +5,34 @@
 
 {% block content %}
 <div class="container center">
-    <div class="profile-info">
-        <div class="container form-container">
-            <div class="companions right">
+    <h1>Profile</h1>
+    <div class="profiles">
+        {% if profiles %}
             {% for profile in profiles %}
-                {% if profile.companian %}
-                    {% for com in profile.companian.all %}
-                        <a class="lnk" href="{% url 'profile' com.id %}"><div> @ {{ com }}</div></a>
-                    {% endfor %}
-                {% endif %}
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-            
+                <div class="companions">
+                    <div>
+                        <div class="profile"><a class="center lnk" href="{% url 'profile' profile.id %}">
+                            {% if profile.profile_image %}
+                                <img class="pimg" src={{ profile.profile_image.url }}></img>
+                            {% else %}
+                                <img class="pimg" src={% static 'image/default.png' %}></img>
+                            {% endif %}
+                            <span> @{{ profile }}</span></a>
+                            <div class="right">
+                                <button id="comp" class="compan">
+                                    {% if profile in request.user.profile_set.first.companian.all %}
+                                    uncom
+                                    {% else %}
+                                    com
+                                    {% endif %}
+                                </button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div> 
 </div>
 {% endblock %}

@@ -174,5 +174,8 @@ document.addEventListener("DOMContentLoaded", function (){
             }
         })
     }
+    document.querySelector("#comp").addEventListener("click", ()=>{
+        console.log("ok");
+    })
 })
 
