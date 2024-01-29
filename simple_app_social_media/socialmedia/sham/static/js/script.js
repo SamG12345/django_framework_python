@@ -201,7 +201,6 @@ document.addEventListener("DOMContentLoaded", function (){
         var loc_arr = loc.split("/");
         if(loc_arr.length>3){
             for (let i=loc_arr.length; i>3; i--){
-                console.log(i);
                 loc_arr.pop(i-1);
             }
             return loc_arr.join("/");
@@ -211,16 +210,16 @@ document.addEventListener("DOMContentLoaded", function (){
     var search = document.querySelector(".search-btn");
     if (search){
         search.addEventListener("click", (e)=>{
-            e.preventDefault();
-            console.log(e.target.parentElement.children[0]);
+            console.log(e.target.parentElement);
             srch = e.target.parentElement.children[1].value;
             if (srch != ""){
-                var f = new FormData(e.target.parentElement.children[1])
-                var url = inc();
+                var f = new FormData(e.target.parentElement);
+                var url = inc()+"/search";
+                console.log(url);
                 fetch(url, {
                     method: "POST",
                     body: f
-                })
+                });
             }
         })
     }

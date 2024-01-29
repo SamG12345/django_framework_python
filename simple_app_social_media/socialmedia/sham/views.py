@@ -175,5 +175,11 @@ def search_profile(request):
         if request.method=="POST":
             inp = request.POST.get("search")
             print(inp)
-            search = Profile.objects.filter(user_user__contains=inp)
-        return render(request, "pages/search.html", {"search": search})
+            search = Profile.objects.filter(user__username__contains=inp)
+            search1 = Lekh.objects.filter(body__contains = inp)
+            print("search = ", search, "\nt = ",search1)
+            return render(request, "pages/search.html", {"search": search, "lekhs":search1})
+        else:
+            return render(request, "pages/search.html", {})
+    else:
+        return redirect("signin")
