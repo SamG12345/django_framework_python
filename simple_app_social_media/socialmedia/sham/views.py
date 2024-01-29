@@ -153,3 +153,18 @@ def profile_list(request):
         return render(request, 'pages/profile_list.html', {'profiles':profiles})
     else:
         return redirect("signin")
+
+# pany
+def compain(request, id):
+    if request.user.is_authenticated:
+        profile = get_object_or_404(Profile, user=request.user)
+        comp_profile = get_object_or_404(Profile, user_id = id)
+        response_data = {}
+        if comp_profile in profile.companian.all:
+            profile.companian.remove(comp_profile)
+            response_data = {'message': 'compaining'}
+        else:
+            profile.companian.add(comp_profile)
+            response_data = {'message': 'error'}
+        return JsonResponse(response_data)
+    return redirect("signin")
