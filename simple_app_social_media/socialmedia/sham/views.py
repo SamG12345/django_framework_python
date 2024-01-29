@@ -172,4 +172,8 @@ def compain(request, id):
 # search
 def search_profile(request):
     if request.user.is_authenticated:
+        if request.method=="POST":
+            inp = request.POST.get("search")
+            print(inp)
+            search = Profile.objects.filter(user_user__contains=inp)
         return render(request, "pages/search.html")

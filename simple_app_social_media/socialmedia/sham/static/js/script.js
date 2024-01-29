@@ -196,7 +196,18 @@ document.addEventListener("DOMContentLoaded", function (){
             })
         })
     }
-
+    function inc(){
+        var loc = window.location.href;
+        var loc_arr = loc.split("/");
+        if(loc_arr.length>3){
+            for (let i=loc_arr.length; i>3; i--){
+                console.log(i);
+                loc_arr.pop(i-1);
+            }
+            return loc_arr.join("/");
+        }
+        return loc
+    }
     var search = document.querySelector(".search-btn");
     if (search){
         search.addEventListener("click", (e)=>{
@@ -204,7 +215,12 @@ document.addEventListener("DOMContentLoaded", function (){
             console.log(e.target.parentElement.children[0]);
             srch = e.target.parentElement.children[1].value;
             if (srch != ""){
-                console.log("ok");
+                var f = new FormData(e.target.parentElement.children[1])
+                var url = inc();
+                fetch(url, {
+                    method: "POST",
+                    body: f
+                })
             }
         })
     }
