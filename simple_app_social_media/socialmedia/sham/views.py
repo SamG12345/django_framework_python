@@ -144,3 +144,11 @@ def upload_pp(request):
         return JsonResponse({'message': 'error'})
     else:
         return redirect("signin")
+
+# profile list
+def profile_list(request):
+    if (request.user.is_authenticated):
+        proifles = Profile.objects.exclude(user=request.user)
+        return render(request, 'pages/profile_list.html', {'profiles':proifles})
+    else:
+        return redirect("signin")
