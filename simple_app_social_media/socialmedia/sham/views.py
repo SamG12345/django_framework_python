@@ -176,4 +176,4 @@ def search_profile(request):
             inp = request.POST.get("search")
             print(inp)
             search = Profile.objects.filter(user_user__contains=inp)
-        return render(request, "pages/search.html")
+        return render(request, "pages/search.html", {"search": search})
