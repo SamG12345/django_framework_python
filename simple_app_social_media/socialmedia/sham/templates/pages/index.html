@@ -6,7 +6,7 @@
 {% block content %}
     <div class="container center">
         <div class="index_pp_container">
-            <a href="{% url 'profile' request.user.profile_set.first.id %}" ><span><img class="index_pp" src={{request.user.profile_set.first.profile_image.url}}></img></span></a>
+            <a href="{% url 'profile' request.user.profile_set.first.id %}" ><span><img class="index_pp" {% if profile.profile_image %}src={{request.user.profile_set.first.profile_image.url}}{% else %}src={% static 'image/default.png' %}{% endif %}></img></span></a>
         </div>
         <div class="fmr">
             <form method="post">

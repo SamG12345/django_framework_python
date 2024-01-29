@@ -174,22 +174,27 @@ document.addEventListener("DOMContentLoaded", function (){
             }
         })
     }
-    document.querySelector("#comp").addEventListener("click", (e)=>{
+    var comp = document.querySelectorAll("#comp");
+    if (comp){
+        comp.forEach(element => {
+            element.addEventListener("click", (e)=>{
         
-        console.log(e.target.parentElement.parentElement.id);
-        var id = e.target.parentElement.parentElement.id;
-        var url = "/comp/"+id;
-        fetch(url, {
-            method: "GET",
-        }).then(response => response.json()).then(data => {
-            if (data.message == "compaining"){
-                e.target.innerText = "uncompane";
-            }
-            else{
-                e.target.innerText = "compane";
-            }
-            console.log(data);
+                console.log(e.target.parentElement.parentElement.id);
+                var id = e.target.parentElement.parentElement.id;
+                var url = "/comp/"+id;
+                fetch(url, {
+                    method: "GET",
+                }).then(response => response.json()).then(data => {
+                    if (data.message == "compaining"){
+                        e.target.innerText = "Uncompane";
+                    }
+                    else{
+                        e.target.innerText = "Compane";
+                    }
+                    console.log(data);
+                })
+            })
         })
-    })
+    }
 })
 
