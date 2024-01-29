@@ -146,10 +146,11 @@ document.addEventListener("DOMContentLoaded", function (){
         ppp_ch[1].addEventListener("click", ()=> {
             ppv(pp);
         })
-        ppp_ch[2].children[0].children[0].addEventListener("change", (e) => {
-            console.log("ok", ppp_ch[2].children[0]);
+        console.log("ok = ", ppp_ch[2].children[0].children[1]);
+        ppp_ch[2].children[0].children[1].addEventListener("change", (e) => {
+            console.log("ok = ", ppp_ch[2].children[0].children[0]);
             var f = new FormData(ppp_ch[2].children[0]);
-            console.log(f);
+            console.log(ppp_ch[2].children[0]);
             pp_chng(f);
 
         })
@@ -161,12 +162,15 @@ document.addEventListener("DOMContentLoaded", function (){
         window.location.href = a;
     }
     function pp_chng(f){
-        fetch("//profile_image_upload", {
+        fetch("profile_image_upload", {
             method: "POST",
             body: f
         }).then(response => response.json()).then(data => {
             if (data.message == "uploaded"){
-                window.location.herf=window.location.herf;
+                window.location.href=window.location.href;
+            }
+            else{
+                console.log("eror");
             }
         })
     }

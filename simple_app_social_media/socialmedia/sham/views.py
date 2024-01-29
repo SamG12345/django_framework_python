@@ -78,7 +78,6 @@ def profile_view(request, id):
             le.save()
             return redirect(request.META.get("HTTP_REFERER"))
         profile = get_object_or_404(Profile, id=id)
-        print("profile = ",profile)
         lekhs = Lekh.objects.filter(profile=profile).order_by("-date_created")
         return render(request, 'pages/profile.html', {"profile":profile, "lekhs":lekhs, 'form':form})
 
@@ -138,7 +137,9 @@ def upload_pp(request):
     if (request.user.is_authenticated):
         if request.method == "POST":
             profile = get_object_or_404(Profile, user=request.user)
-            profile.profile_image = request.FILES
+            profile.profile_image = request.FILES.get("pp")
             profile.save()
             return JsonResponse({'message': 'uploaded'})
         return JsonResponse({'message': 'error'})
+    else:
+        return redirect("signin")

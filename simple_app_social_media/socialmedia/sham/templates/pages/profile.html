@@ -12,7 +12,7 @@
                     <div>
                         <div><button id"up_pp">change</button></div>
                         <div><button id"v_pp">view</button></div>
-                        <div id="pl"><form method="post" enctype="multipart/form-data"><input type="file"></form></div>
+                        <div id="pl"><form method="post" enctype="multipart/form-data">{% csrf_token %}<input id="pp" name="pp" type="file"></form></div>
                     </div>
                 </div>
                 {% if profile.profile_image %}
