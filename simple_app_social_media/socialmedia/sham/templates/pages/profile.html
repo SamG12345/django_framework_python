@@ -8,15 +8,15 @@
     {% if profile %}
         <div class="prof center">
             <div class="profile-img-container">
-                <div style="display: none;" id="pp" class="overlay">
+                <div onClick="this.style.display='none';" style="display: none;" id="pp" class="overlay">
                     <div>
                         <div><button id"up_pp">change</button></div>
                         <div><button id"v_pp">view</button></div>
-                        <div id="pl"><form method="post" enctype="multipart/form-data">{% csrf_token %}<input id="pp" name="pp" type="file"></form></div>
+                        <div hidden id="pl"><form method="post" enctype="multipart/form-data">{% csrf_token %}<input label="up" value="upload" id="pp" name="pp" type="file"></form></div>
                     </div>
                 </div>
                 {% if profile.profile_image %}
-                    <span><img src={{profile.profile_image.url}}></img></span>
+                    <span onClick="var ch= document.getElementById('pp'); if(ch.style.display =='none'){ch.style.display='block';}else{ch.style.display='none'} "><img src={{profile.profile_image.url}}></img></span>
                 {% else %}
                     <span><img src={% static 'image/default.png' %}></img></span>
                 {% endif %}

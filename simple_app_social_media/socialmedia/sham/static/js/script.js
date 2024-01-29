@@ -137,11 +137,11 @@ document.addEventListener("DOMContentLoaded", function (){
     if(pp){
         console.log("ok", pp);
         var ppp = document.querySelector("#pp");
-        ppp.style.display = "block";
         console.log(ppp);
         ppp_ch = ppp.children[0].children;
         ppp_ch[0].addEventListener("click", ()=>{
-            pp_chng();
+            console.log("new = ", ppp_ch[2].children[0].children[1]);
+            ppp_ch[2].children[0].children[1].click();
         })
         ppp_ch[1].addEventListener("click", ()=> {
             ppv(pp);
