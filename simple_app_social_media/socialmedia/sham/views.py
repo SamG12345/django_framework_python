@@ -156,7 +156,6 @@ def profile_list(request):
 
 # pany
 def compain(request, id):
-    print("ok")
     if request.user.is_authenticated:
         profile = get_object_or_404(Profile, user=request.user)
         comp_profile = get_object_or_404(Profile, id = id)
@@ -169,3 +168,8 @@ def compain(request, id):
             response_data = {'message': 'compaining'}
         return JsonResponse(response_data)
     return redirect("signin")
+
+# search
+def search_profile(request):
+    if request.user.is_authenticated:
+        return render(request, "pages/search.html")

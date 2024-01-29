@@ -12,10 +12,10 @@
                 <div class="companions">
                     <div>
                         <div class="profile" id="{{profile.id}}"><a class="center lnk" href="{% url 'profile' profile.id %}">
-                            {% if profile.profile_image %}
-                                <img class="pimg" src={{ profile.profile_image.url }}></img>
+                            {% if lekh.profile.profile_image %}
+                                <img class="index_pp" src={{ lekh.profile.profile_image.url }}></img>
                             {% else %}
-                                <img class="pimg" src={% static 'image/default.png' %}></img>
+                                <img class="index_pp" src={% static 'image/default.png' %}></img>
                             {% endif %}
                             <span> @{{ profile }}</span></a>
                             <div class="right">

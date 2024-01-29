@@ -1,5 +1,11 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
 {% block content %}
-
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<div class="center">
 {% if messages %}
 <div class="success-message">
     {% for message in messages %}
@@ -9,17 +15,17 @@
     {% endfor %}
 </div>
 {% endif %}
-
+<div>
 <form method="POST">
     {% csrf_token %}
     <div class="login_container">
         <div class="login_contain">
             <div class="username_contain">
-                <label>username</label>
+                <label for="username">username</label>
                 <input type="text" id="username" name='username' required>
             </div>
             <div class="password_conatin">
-                <label>password</label>
+                <label for="password">password</label>
                 <input type="password" id="password" name='password' required>
             </div>
             <div>
@@ -28,5 +34,10 @@
         </div>
     </div>
 </form>
-
+<div>
+    <a>signup</a>
+</div>
+</div>
+</div>
 {% endblock %}
+</html>

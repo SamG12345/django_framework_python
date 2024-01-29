@@ -9,11 +9,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 </head>
-
 <body>
     <div class="navi">
         <div>
             <a href="{% url 'index' %}">Home</a>
+        </div>
+        <div>
+            <a href="{% url 'profiles' %}">Profiles</a>
+        </div>
+        <div class="search-form">
+            <form method="post">
+                {% csrf_token %}
+                <input type="text" placeholder="Search" name="search">
+                <button class="search-btn" type="submit">Search</button>
+            </form>
         </div>
 
         {% if user.is_authenticated %}
@@ -23,6 +32,11 @@
                 </div>
             </div>
         {% endif %}
+        <div class="index_pp-container">
+            <a href="{% url 'profile' request.user.profile_set.first.id %}">
+                <img class="index_pp" {% if profile.profile_image %}src="{{profile.profile_image.url}}" alt="Profile Image" {% elif request.user.profile_set.first.profile_image %}src="{{request.user.profile_set.first.profile_image.url}}" alt="Profile Image" {% else %}src="{% static 'image/default.png' %}" alt="Default Image"{% endif %}>
+            </a>
+        </div>
     </div>
 
     {% block content %}

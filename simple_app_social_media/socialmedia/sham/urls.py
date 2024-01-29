@@ -33,3 +33,6 @@ urlpatterns += [ path("profiles", views.profile_list, name="profiles"), ]
 
 # comp
 urlpatterns += [ path("comp/<int:id>", views.compain, name="comp"), ]
+
+# search
+urlpatterns += [ path("search", views.search_profile, name="search"), ]

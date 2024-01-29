@@ -196,5 +196,17 @@ document.addEventListener("DOMContentLoaded", function (){
             })
         })
     }
+
+    var search = document.querySelector(".search-btn");
+    if (search){
+        search.addEventListener("click", (e)=>{
+            e.preventDefault();
+            console.log(e.target.parentElement.children[0]);
+            srch = e.target.parentElement.children[1].value;
+            if (srch != ""){
+                console.log("ok");
+            }
+        })
+    }
 })
 
