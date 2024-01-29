@@ -30,3 +30,6 @@ urlpatterns += [ path("leakh/delete/<int:lekh_id>", views.delete_lekh, name="del
 
 # profiles
 urlpatterns += [ path("profiles", views.profile_list, name="profiles"), ]
+
+# comp
+urlpatterns += [ path("comp/<int:id>", views.compain, name="comp"), ]
