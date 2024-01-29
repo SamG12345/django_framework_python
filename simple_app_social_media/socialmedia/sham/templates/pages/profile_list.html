@@ -8,11 +8,13 @@
     <div class="profile-info">
         <div class="container form-container">
             <div class="companions right">
+            {% for profile in profiles %}
                 {% if profile.companian %}
                     {% for com in profile.companian.all %}
                         <a class="lnk" href="{% url 'profile' com.id %}"><div> @ {{ com }}</div></a>
                     {% endfor %}
                 {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
