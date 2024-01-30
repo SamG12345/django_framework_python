@@ -37,8 +37,8 @@
                         </a></div>
                         <div class="body"><a class="lnk" href="{% url 'lekh_view' lekh.id %}">{{ lekh.body }}</a></div>
                         {% if lekh.file %}
-                        <div>
-                            <img style="width: 100%;" src={{ lekh.file.url }}></img>
+                        <div><a class="lnk" href="{% url 'lekh_view' lekh.id %}">
+                            <img style="width: 100%;" src={{ lekh.file.url }}></img></a>
                         </div>
                         {% endif %}
                         <div class="date">{{ lekh.date_created }}</div>
@@ -68,6 +68,12 @@
                                     </div>
                                 </div>
                             {% endif %}
+                            <div class="leka lake_a likes lake lake_b ">
+                                <span>
+                                    <i id="l_shr" class="glyphicon glyphicon-share-alt"></i>
+                                </span>
+                                <span class="lake la_s">Share</sapn>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}

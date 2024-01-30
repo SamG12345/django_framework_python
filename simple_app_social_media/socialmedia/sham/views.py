@@ -82,6 +82,9 @@ def profile_view(request, id):
             le = form.save(commit=False)
             le.profile = Profile.objects.get(user=request.user)
             le.save()
+            if(request.FILES.get("file")):
+                le.file = request.FILES.get("file")
+                le.save()
             return redirect(request.META.get("HTTP_REFERER"))
         profile = get_object_or_404(Profile, id=id)
         lekhs = Lekh.objects.filter(profile=profile).order_by("-date_created")
@@ -117,6 +120,10 @@ def lekh_view(request, lekh_id):
                 l.save()
                 l.parent = lekh
                 l.save()
+                print(request.FILES.get("file"))
+                if(request.FILES.get("file")):
+                    l.file = request.FILES.get("file")
+                    l.save()
                 return redirect(request.META.get("HTTP_REFERER"))
             re_lekhs = Lekh.objects.filter(parent_id=lekh.id).order_by("-date_created")
             return render(request, "pages/lekh.html", {"lekh": lekh, 'form': form, "re_lekhs": re_lekhs})

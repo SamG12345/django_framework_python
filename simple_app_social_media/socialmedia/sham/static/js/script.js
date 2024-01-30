@@ -209,6 +209,15 @@ document.addEventListener("DOMContentLoaded", function (){
         }
         return loc;
     }
+    var l_shr = document.querySelectorAll("#l_shr");
+    if(l_shr){
+        l_shr.forEach(element => {
+            element.addEventListener("click", () => {
+                console.log("ok");
+                navigator.clipboard.writeText(window.location.href);
+            })
+        })
+    }
     
 })
 

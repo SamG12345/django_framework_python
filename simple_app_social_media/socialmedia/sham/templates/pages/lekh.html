@@ -20,10 +20,15 @@
                         <span>{{ lekh.profile }}</span>
                     </a></div>
                     <div class="body lnk">{{ lekh.body }}</div>
+                    {% if lekh.file %}
+                        <div>
+                            <img style="width: 100%;" src={{ lekh.file.url }}></img>
+                        </div>
+                    {% endif %}
                     <div class="date">{{ lekh.date_created }}</div>
                     <div class="lake_a">
                         <div class="likes lake_b">
-                            <i {% if request.user.profile_set.exists and request.user.profile_set.first in lekh.likes.all %}id="unlike"{% else %}id="like"{% endif %} class="fa fa-thumbs-up lake"></i>
+                            <i {% if request.user.profile_set.exists and request.user.profile_set.first in lekh.likes.all %} id="unlike" {% else %}id="like"{% endif %} class="fa fa-thumbs-up lake"></i>
                             <span style="padding-right: 11px;" id="no_of_likes" class"like_lab lake">{{ lekh.no_of_likes }} Likes</span>
                             <button hidden class="like-button lake">Like</button>
                         </div>
@@ -47,15 +52,27 @@
                                 </div>
                             </div>
                         {% endif %}
+                        <div class="leka lake_a likes lake lake_b ">
+                            <span>
+                                <i id="l_shr" class="glyphicon glyphicon-share-alt"></i>
+                            </span>
+                            <span class="lake la_s">Share</sapn>
+                        </div>
                     </div>
                 </div>
             {% endif %}
         </div>
         <div class="fmr">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div>
                     {{ form.body }}
+                </div>
+                <div>
+                    <label for="id_file" class="custom-file-upload">
+                        <span>Choose File</span>
+                        {{ form.file }}
+                    </label>
                 </div>
                 <div>
                     <button type="submit">Post Lekh</button>
@@ -75,6 +92,11 @@
                             <span>{{ lekh.profile }}</span>
                         </a></div>
                         <div class="body"><a class="lnk" href="{% url 'lekh_view' re_lekh.id %}">{{ re_lekh.body }}</a></div>
+                        {% if re_lekh.file %}
+                        <div><a class="lnk" href="{% url 'lekh_view' re_lekh.id %}">
+                            <img style="width: 100%;" src={{ re_lekh.file.url }}></img></a>
+                        </div>
+                        {% endif %}
                         <div class="date">{{ re_lekh.date_created }}</div>
                         <div class="lake_a">
                             <div class="likes lake_b">
@@ -101,7 +123,14 @@
                                         <div><button id"rm_co">ok</button></div>
                                     </div>
                                 </div>
+                                
                             {% endif %}
+                            <div class="leka lake_a likes lake lake_b ">
+                                <span>
+                                    <i id="l_shr" class="glyphicon glyphicon-share-alt"></i>
+                                </span>
+                                <span class="lake la_s">Share</sapn>
+                            </div>
                         </div>
                     </div>
                 {% endfor %}
