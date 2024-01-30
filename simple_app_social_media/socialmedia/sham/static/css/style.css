@@ -5,6 +5,36 @@ body {
     margin: 0;
     padding: 0;
 }
+/* Style for the container */
+.custom-file-upload {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+}
+
+/* Style for the file input */
+.custom-file-upload input[type="file"] {
+    position: absolute;
+    font-size: 100px;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+
+/* Style for the label text */
+.custom-file-upload span {
+    display: inline-block;
+    background: brown;
+    color: white;
+    padding: 5px 7px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Hover effect for the label */
+.custom-file-upload:hover span {
+    background: #45a049;
+}
 
 .navi {
     background-color: #333;

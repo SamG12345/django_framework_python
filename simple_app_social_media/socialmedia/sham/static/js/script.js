@@ -205,7 +205,7 @@ document.addEventListener("DOMContentLoaded", function (){
             }
             return loc_arr.join("/");
         }
-        return loc
+        return loc;
     }
     
 })

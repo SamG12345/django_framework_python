@@ -8,8 +8,9 @@ class CustomUserForm(UserCreationForm):
         model = User
         fields = ['username', 'password1', 'password2']
 
+
 class LekhForm(forms.ModelForm):
-    body = forms.CharField(required=True,
+    body = forms.CharField(required=False,
                            widget=forms.widgets.Textarea(
                                attrs={
                                    "placeholder": "Write Something",
@@ -20,9 +21,13 @@ class LekhForm(forms.ModelForm):
                            ),
                            label=""
                            )
+    file = forms.FileField(required=False,
+                            label="",
+                            
+                            )
     class Meta:
         model = Lekh
-        fields=["body"]
+        fields=["body","file"]
 
 class ProfileImgForm(forms.ModelForm):
     profile_image = forms.ImageField(label="Profile Image")

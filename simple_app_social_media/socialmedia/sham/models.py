@@ -26,6 +26,7 @@ post_save.connect(create_profile, sender=User)
 class Lekh(models.Model):
     profile = models.ForeignKey(Profile, on_delete = models.CASCADE)
     body = models.CharField(max_length=200)
+    file = models.FileField(blank=True, null=True, upload_to="lekh/" ,verbose_name="")
     date_created = models.DateTimeField(Profile, auto_now_add=True)
     likes = models.ManyToManyField(Profile, related_name="liked_by", symmetrical=False, blank=True)
     parent = models.ForeignKey("self", null=True, blank=True, related_name="re_lekh", on_delete = models.CASCADE)
