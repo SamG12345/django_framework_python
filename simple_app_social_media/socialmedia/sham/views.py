@@ -52,10 +52,16 @@ def index(request):
     if request.user.is_authenticated:
         form = LekhForm(request.POST or None)
         if form.is_valid():
-            le = form.save(commit=False)
-            le.profile = Profile.objects.get(user=request.user)
-            le.save()
-            return redirect("index")
+            if(form.data.get("body") or request.FILES.get("file")):
+                le = form.save(commit=False)
+                le.profile = Profile.objects.get(user=request.user)
+                le.save()
+                if(request.FILES.get("file")):
+                    le.file = request.FILES.get("file")
+                    le.save()
+                return redirect("index")
+            else:
+                return redirect("index")
         else:
             lekh = Lekh.objects.filter(parent__isnull=True).order_by('-date_created')
             return render(request, "pages/index.html", {"lekhs":lekh, "form":form})
@@ -123,6 +129,7 @@ def delete_lekh(request, lekh_id):
         lekh = get_object_or_404(Lekh, id=lekh_id)
         response_data = {}
         if lekh and lekh.profile.user == request.user:
+            lekh.file.delete()
             lekh.delete()
             response_data = {'message': 'Deleted'}
         else:
@@ -149,7 +156,6 @@ def upload_pp(request):
 def profile_list(request):
     if (request.user.is_authenticated):
         profiles = Profile.objects.exclude(user=request.user)
-        print("profile = ", profiles)
         return render(request, 'pages/profile_list.html', {'profiles':profiles})
     else:
         return redirect("signin")
@@ -175,10 +181,8 @@ def search_profile(request):
         if request.method=="POST":
             inp = request.POST.get("search")
             if(inp):
-                print(inp)
                 search = Profile.objects.filter(user__username__contains=inp)
                 search1 = Lekh.objects.filter(body__contains = inp)
-                print("search = ", search, "\nt = ",search1)
                 return render(request, "pages/search.html", {"search": search, "lekhs":search1})
         return render(request, "pages/search.html", {})
     else:

@@ -6,7 +6,7 @@
 {% block content %}
     <div class="container center">
         <div class="fmr">
-            <form method="post">
+            <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 <div>
                     {{ form.body }}
@@ -36,6 +36,11 @@
                             <span>{{ lekh.profile }}</span>
                         </a></div>
                         <div class="body"><a class="lnk" href="{% url 'lekh_view' lekh.id %}">{{ lekh.body }}</a></div>
+                        {% if lekh.file %}
+                        <div>
+                            <img style="width: 100%;" src={{ lekh.file.url }}></img>
+                        </div>
+                        {% endif %}
                         <div class="date">{{ lekh.date_created }}</div>
                         <div class="lake_a">
                             <div class="likes lake_b">

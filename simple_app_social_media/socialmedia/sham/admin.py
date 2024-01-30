@@ -9,6 +9,6 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Lekh)
 class lekhAdmin(admin.ModelAdmin):
-    list_display = ['body']
+    list_display = ['profile', 'body', 'file']
 # Note: 'user' in list_display assumes you have a __str__ method in your User model.
 # If not, you might want to display a different attribute or define __str__ in your User model.

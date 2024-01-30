@@ -83,6 +83,9 @@ document.addEventListener("DOMContentLoaded", function (){
                 });
                 oll[1].addEventListener("click", (e)=>{
                     var lekhId = e.currentTarget.closest('.lekh');
+                    console.log(lekhId);
+                    e.preventDefault();
+                    return;
                     l_rm(e, lekhId);
                 });
                 
@@ -125,8 +128,7 @@ document.addEventListener("DOMContentLoaded", function (){
                     ol.style.display = "none";
                 });
                 oll[1].addEventListener("click", (e)=>{
-                    console.log(e);
-                    var i = cl_rm_c[0].parentElement.parentElement;
+                    var i = element.parentElement.parentElement;
                     l_rm(e, i);
                 });
                 
