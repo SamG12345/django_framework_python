@@ -207,21 +207,6 @@ document.addEventListener("DOMContentLoaded", function (){
         }
         return loc
     }
-    var search = document.querySelector(".search-btn");
-    if (search){
-        search.addEventListener("click", (e)=>{
-            console.log(e.target.parentElement);
-            srch = e.target.parentElement.children[1].value;
-            if (srch != ""){
-                var f = new FormData(e.target.parentElement);
-                var url = inc()+"/search";
-                console.log(url);
-                fetch(url, {
-                    method: "POST",
-                    body: f
-                });
-            }
-        })
-    }
+    
 })
 

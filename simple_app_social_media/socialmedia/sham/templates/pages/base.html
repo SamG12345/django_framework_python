@@ -18,9 +18,9 @@
             <a href="{% url 'profiles' %}">Profiles</a>
         </div>
         <div class="search-form">
-            <form method="post">
+            <form class="search_ing" method="post" action={% url 'search' %}>
                 {% csrf_token %}
-                <input type="text" placeholder="Search" name="search">
+                <input class="search_inp" type="text" placeholder="Search" name="search">
                 <button class="search-btn" type="submit">Search</button>
             </form>
         </div>
