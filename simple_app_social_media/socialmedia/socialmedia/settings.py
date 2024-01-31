@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-sr6k5rdhk8r^3uhi+v0!)6t=-f_7nvbw1-#(up^#qb4j1=&x5f
 DEBUG = True
 
 # vercel_app/settings.py
-ALLOWED_HOSTS = ['127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '.vercel.app', '.now.sh']
 
 # Application definition
 
@@ -76,6 +76,10 @@ WSGI_APPLICATION = 'socialmedia.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
 }
 
 
@@ -117,6 +121,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIR = [
     os.path.join(BASE_DIR, 'sham/static')
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles_build' '/media')
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, 'sham/media')

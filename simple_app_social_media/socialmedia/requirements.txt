@@ -1,4 +1,5 @@
-# vercel-django-example/requirements.txt
-# https://github.com/jayhale/vercel-django-example/blob/main/requirements.txt#L1
-
-Django==3.9
+asgiref==3.7.2
+Django==5.0.1
+pillow==10.2.0
+sqlparse==0.4.4
+tzdata==2023.4
