@@ -77,8 +77,12 @@ WSGI_APPLICATION = 'socialmedia.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'railway',
+        'USER': 'postgres',
+        'PASSWORD': '-*gG635bgFG-561B4bBG2GaadCaa-ggC',
+        'HOST': 'viaduct.proxy.rlwy.net',
+        'PORT': '46117',
     }
 }
 
