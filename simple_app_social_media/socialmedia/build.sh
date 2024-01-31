@@ -1,5 +1,5 @@
-python3.10 -m venv venv
-source venv/bin/activate
+
+source virtu/bin/activate
 
 python3 -m pip install
 
